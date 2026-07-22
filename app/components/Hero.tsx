@@ -16,9 +16,6 @@ export default function Hero() {
       <div className="hero__scrim-bottom" aria-hidden />
 
       <div className="hero__content">
-        <p className="hero__coord">
-          26.142&deg; N &middot; 81.795&deg; W &mdash; Southwest Florida
-        </p>
         <h1 className="wordmark">
           <span className="rv">
             <span>The</span>
