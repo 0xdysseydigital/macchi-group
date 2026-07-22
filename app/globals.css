@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  /* Colors */
+  --color-paper: #ffffff;
+  --color-mist: #f4f6f7;
+  --color-ink: #0e1418;
+  --color-soft: #2a3036;
+  --color-navy: #002e5c;
+  --color-muted: #706862;
+  --color-silver: #bdbdbd;
+  --color-hairline: #e4e7e6;
+  --color-gold: #dfad38;
+
+  /* Topographic line */
+  --topo-color: #002e5c;
+  --topo-opacity: 0.1;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-40: 40px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-144: 144px;
+  --space-180: 180px;
+
+  /* Layout */
+  --page-max: 1200px;
+  --section-pad: clamp(96px, 12vw, 180px);
+  --gutter: clamp(24px, 5vw, 72px);
+
+  /* Motion — hero reveal only */
+  --reveal-duration: 1.15s;
+  --reveal-ease: cubic-bezier(0.16, 0.84, 0.44, 1);
+  --reveal-offset: 108%;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-mist: var(--color-mist);
+  --color-ink: var(--color-ink);
+  --color-navy: var(--color-navy);
+  --color-muted: var(--color-muted);
+  --color-silver: var(--color-silver);
+  --color-hairline: var(--color-hairline);
+  --color-gold: var(--color-gold);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --text-eyebrow: 0.6875rem;
+  --text-caption: 0.75rem;
+  --text-body: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem);
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.125rem);
+  --text-heading-sm: clamp(1.375rem, 1.2rem + 0.9vw, 1.75rem);
+  --text-heading: clamp(1.875rem, 1.45rem + 2vw, 2.75rem);
+  --text-display: clamp(2.5rem, 1.8rem + 3.1vw, 4rem);
+  --text-numeral: clamp(2.25rem, 1.7rem + 2.6vw, 3.75rem);
+
+  --radius-card: 3px;
+  --radius-button: 3px;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), Arial, "Helvetica Neue", sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-synthesis-weight: none;
+}
