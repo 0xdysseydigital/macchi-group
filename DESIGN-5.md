@@ -41,9 +41,9 @@ An upright-italic-structured serif: calligraphic skeleton with vertical stress, 
   - **Never let the browser fake it:** set `font-weight:400` and `font-synthesis-weight:none` on all display elements. Synthetic bold destroys the high-contrast strokes.
   - **Emphasis = navy color (and scale), never weight.** `.em { color: var(--color-navy) }`. On video, emphasis is scale/position instead, since navy won't read over footage.
 - **Case:** the font *does* include lowercase, but the system sets display type in **CAPS** (`text-transform: uppercase`) to match the wordmark. Sentence case is available if a softer heading is ever wanted.
-- **Sizes:** 18px → 168px. Section headings 20–36px; the hero wordmark runs to ~11.5vw.
-- **Tracking:** +0.05em headings, +0.005em at wordmark scale (large caps need almost none), +0.2em for the small nav wordmark.
-- **Line height:** 0.86 at wordmark scale; 1.16–1.2 for multi-line headings.
+- **Sizes:** 18px → 225px. Section headings 20–36px; the hero wordmark runs to ~13.5vw, capped at 225px.
+- **Tracking:** +0.05em headings, **-0.08em at wordmark scale** (condensed, per Framer source), +0.2em for the small nav wordmark.
+- **Line height:** 1.2 at wordmark scale; 1.16–1.2 for multi-line headings.
 
 ### Inter — Body, UI & cartographic labels (set REGULAR)
 A clean grotesque sans used at **Regular (400)** for a calm, functional body voice. Body copy, nav, buttons, captions, eyebrows, and coordinate labels. Pairs with Cormorant Upright as a serif-display / sans-body system — the two are distinguished by case, scale, and tracking rather than by contrasting serif styles. · `--font-body`
@@ -150,7 +150,7 @@ The single most important composition on the site. Built from the Framer design.
 **Structure:** `<header>` at exactly one viewport (`height:100svh`, min 560px), content anchored **bottom-left**.
 - **Background:** full-bleed looping video, `object-fit:cover` — top-down aerial surf/shoreline footage. `<video autoPlay muted loop playsInline poster>`; final file at `/public/media/hero-coastline.mp4`, poster at `/public/media/hero-poster.jpg`.
 - **Scrim:** two soft gradients only — a light top wash for nav legibility and a diagonal bottom-left wash (~52% → 0) so the white wordmark holds over bright surf. Keep it subtle; the footage should stay bright and airy.
-- **Wordmark:** `THE / MACCHI / GROUP` stacked on three lines, Cormorant Upright caps, white, `clamp(3.25rem, 11.5vw, 10.5rem)`, line-height **0.86**, tracking +0.005em. It sits at the page gutter, ~48–86px off the bottom. This is the only place the wordmark appears at scale.
+- **Wordmark:** `THE / MACCHI / GROUP` stacked on three lines, Cormorant Upright caps, white, `clamp(3.5rem, 13.5vw, 14.0625rem)` (225px cap, matching the Framer source), line-height **1.2**, tracking **-0.08em**. It sits at the page gutter, ~48–86px off the bottom. This is the only place the wordmark appears at scale.
 - **Above it:** a small white coordinate label (`26.142° N · 81.795° W — SOUTHWEST FLORIDA`).
 - **Bottom-right:** a small `SCROLL` cue that fades in last.
 - **No buttons in the hero.** The composition stays pure per the design; conversion lives in the always-visible nav CTA and the sections below.
@@ -255,7 +255,7 @@ Simple single-column vertical scroll with abundant whitespace: **hero (full-view
 - type: Cormorant Upright (display, CAPS, single weight; emphasis via navy) + Inter Regular (body/UI sans, 400 throughout); eyebrows 11px uppercase +0.24em; arrows as native → or inline SVG
 
 **Example component prompts**
-1. **Hero:** Full-viewport (100svh) looping muted autoplay aerial surf video, `object-fit:cover`, with a light top scrim and a diagonal bottom-left scrim. Anchored bottom-left at the page gutter: a small white coordinate label, then the wordmark `THE / MACCHI / GROUP` on three lines in Cormorant Upright caps, white, clamp(3.25rem,11.5vw,10.5rem), line-height .86. Each line masked in an `overflow:hidden` wrapper and animated from `translateY(108%)` to 0 over 1.15s `cubic-bezier(.16,.84,.44,1)`, staggered .15/.29/.43s. Small `SCROLL` cue bottom-right fading in at .95s. No buttons in the hero. Honor prefers-reduced-motion (render in place).
+1. **Hero:** Full-viewport (100svh) looping muted autoplay aerial surf video, `object-fit:cover`, with a light top scrim and a diagonal bottom-left scrim. Anchored bottom-left at the page gutter: a small white coordinate label, then the wordmark `THE / MACCHI / GROUP` on three lines in Cormorant Upright caps, white, clamp(3.5rem,13.5vw,14.0625rem), line-height 1.2, tracking -0.08em. Each line masked in an `overflow:hidden` wrapper and animated from `translateY(108%)` to 0 over 1.15s `cubic-bezier(.16,.84,.44,1)`, staggered .15/.29/.43s. Small `SCROLL` cue bottom-right fading in at .95s. No buttons in the hero. Honor prefers-reduced-motion (render in place).
 2. **Stat row:** Three Cormorant Upright caps figures ($197.75M+, 150+, TOP 1%) in ink (unit/percent in navy) with Inter 400 uppercase labels and hairline dividers, generous spacing, white background.
 3. **Community index:** Hairline-separated rows; each row a Cormorant Upright caps community name + Inter region/coordinate caption and a small → ; minimal color-shift hover.
 4. **Primary button:** Navy fill, paper label, Inter 400 13px +0.08em, 3px radius, hover→ink fill, 2px navy focus ring; href `/get-started` (the lead-qualification quiz).
