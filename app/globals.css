@@ -75,3 +75,139 @@ body {
   font-weight: 400;
   font-synthesis-weight: none;
 }
+
+/* Hero */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  /* Fallback fill while /public/media/hero-coastline.mp4 is not yet provided */
+  background: linear-gradient(160deg, var(--color-mist) 0%, #c3d4de 100%);
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__scrim-top,
+.hero__scrim-bottom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__scrim-top {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.28), transparent 40%);
+}
+
+.hero__scrim-bottom {
+  background: linear-gradient(
+    to top right,
+    rgba(0, 0, 0, 0.52),
+    transparent 60%
+  );
+}
+
+.hero__content {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(48px, 6vw, 86px);
+  color: #fff;
+}
+
+.hero__coord {
+  margin: 0 0 var(--space-16);
+  font-family: var(--font-body), Arial, sans-serif;
+  font-size: var(--text-eyebrow);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20%);
+  animation: hero-fade-up var(--reveal-duration) var(--reveal-ease) forwards;
+  animation-delay: 0.05s;
+}
+
+.wordmark {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-synthesis-weight: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: clamp(3.25rem, 11.5vw, 10.5rem);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+}
+
+.rv {
+  display: block;
+  overflow: hidden;
+}
+
+.rv > span {
+  display: block;
+  transform: translateY(var(--reveal-offset));
+  animation: rise var(--reveal-duration) var(--reveal-ease) forwards;
+}
+
+.rv:nth-child(1) > span {
+  animation-delay: 0.15s;
+}
+.rv:nth-child(2) > span {
+  animation-delay: 0.29s;
+}
+.rv:nth-child(3) > span {
+  animation-delay: 0.43s;
+}
+
+.hero__scroll {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(48px, 6vw, 86px);
+  font-family: var(--font-body), Arial, sans-serif;
+  font-size: var(--text-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: #fff;
+  opacity: 0;
+  animation: hero-fade 0.6s ease forwards;
+  animation-delay: 0.95s;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__coord,
+  .rv > span,
+  .hero__scroll {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
