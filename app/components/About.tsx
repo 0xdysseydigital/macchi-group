@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Stats from "./Stats";
 
 const TEAM = [
   {
@@ -23,11 +24,25 @@ export default function About() {
             More than a <em>transaction</em>
           </h2>
           <p className="about__lead">
-            The Macchi Group is a boutique real estate team built on
-            relationships and results, known for a highly personalized,
-            white-glove experience from first conversation to closing and
-            beyond.
+            Southwest Florida&apos;s coast is more than our market — it&apos;s
+            home. We&apos;ve watched Naples, Bonita Springs, and Fort Myers
+            grow from the inside, and that closeness shows up in every
+            recommendation we make, from the right block to the right moment
+            to make an offer.
           </p>
+          <p className="about__lead">
+            The Macchi Group was built on a simple belief: real estate is a
+            long-term partnership, not a single transaction. Clients get
+            strategic guidance grounded in real market fluency, a discreet
+            and highly personalized experience, and a level of commitment
+            that doesn&apos;t end at closing.
+          </p>
+
+          <Link href="/about" className="btn btn--secondary about__cta">
+            About the group
+          </Link>
+
+          <Stats />
         </div>
 
         <div className="about__team">
