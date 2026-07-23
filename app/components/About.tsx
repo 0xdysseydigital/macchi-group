@@ -5,15 +5,24 @@ import Stats from "./Stats";
 const TEAM = [
   {
     name: "Tyler Macchi",
+    role: "Team Lead",
     bio: "Born and raised in Southwest Florida, Tyler brings unmatched local knowledge to every conversation about the coast. He guides clients through Naples, Bonita Springs, and Fort Myers with the perspective only a native can offer.",
     href: "/team/tyler-macchi",
     image: "/images/team/tyler-macchi.jpg",
   },
   {
     name: "Brandon Shirk",
+    role: "Sales Executive",
     bio: "Brandon's years inside some of the country's most exclusive golf clubs shaped a rare fluency in luxury lifestyles and private club living. He brings that insight to every client seeking more than just a home.",
     href: "/team/brandon-shirk",
     image: "/images/team/brandon-shirk.jpg",
+  },
+  {
+    name: "Luke Groff",
+    role: "Operations Manager",
+    bio: "Luke's background is in a rapidly growing restaurant group in Pennsylvania, where digital marketing skills turned into hands-on experience launching and operating new restaurant concepts from the ground up. That same builder's instinct now shapes how The Macchi Group tells its story and reaches new clients.",
+    href: "/team/luke-groff",
+    image: null,
   },
 ];
 
@@ -52,16 +61,19 @@ export default function About() {
           {TEAM.map((member) => (
             <article className="team-card" key={member.name}>
               <div className="team-card__image">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  sizes="(max-width: 560px) 100vw, 260px"
-                  style={{ objectFit: "cover" }}
-                />
+                {member.image && (
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    sizes="(max-width: 560px) 100vw, 260px"
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
               </div>
               <div className="team-card__body">
                 <h3 className="team-card__name">{member.name}</h3>
+                <p className="team-card__role">{member.role}</p>
                 <p className="team-card__bio">{member.bio}</p>
                 <Link href={member.href} className="team-card__link">
                   Full bio

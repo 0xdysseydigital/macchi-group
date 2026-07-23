@@ -297,6 +297,16 @@ body {
   letter-spacing: 0.05em;
 }
 
+.team-card__role {
+  margin: var(--space-8) 0 0;
+  font-family: var(--font-body), Georgia, serif;
+  font-weight: 400;
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-navy);
+}
+
 .team-card__bio {
   margin: var(--space-16) 0 0;
   font-family: var(--font-body), Georgia, serif;
