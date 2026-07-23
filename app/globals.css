@@ -422,6 +422,8 @@ body {
 
 .stats__figure {
   margin: 0;
+  font-family: var(--font-body), Georgia, serif;
+  font-weight: 400;
   text-transform: uppercase;
   font-size: var(--text-heading-sm);
   line-height: 1.1;

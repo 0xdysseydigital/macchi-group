@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Stats from "./Stats";
 
@@ -6,11 +7,13 @@ const TEAM = [
     name: "Tyler Macchi",
     bio: "Born and raised in Southwest Florida, Tyler brings unmatched local knowledge to every conversation about the coast. He guides clients through Naples, Bonita Springs, and Fort Myers with the perspective only a native can offer.",
     href: "/team/tyler-macchi",
+    image: "/images/team/tyler-macchi.jpg",
   },
   {
     name: "Brandon Shirk",
     bio: "Brandon's years inside some of the country's most exclusive golf clubs shaped a rare fluency in luxury lifestyles and private club living. He brings that insight to every client seeking more than just a home.",
     href: "/team/brandon-shirk",
+    image: "/images/team/brandon-shirk.jpg",
   },
 ];
 
@@ -48,7 +51,15 @@ export default function About() {
         <div className="about__team">
           {TEAM.map((member) => (
             <article className="team-card" key={member.name}>
-              <div className="team-card__image" aria-hidden />
+              <div className="team-card__image">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  sizes="(max-width: 560px) 100vw, 260px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
               <div className="team-card__body">
                 <h3 className="team-card__name">{member.name}</h3>
                 <p className="team-card__bio">{member.bio}</p>

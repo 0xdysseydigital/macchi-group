@@ -63,7 +63,7 @@ function StatItem({ stat, active }: { stat: Stat; active: boolean }) {
   const value = useCountUp(stat.target, active);
   return (
     <div className="stats__item">
-      <p className="stats__figure font-display">{stat.format(value)}</p>
+      <p className="stats__figure">{stat.format(value)}</p>
       <p className="stats__label">{stat.label}</p>
     </div>
   );
