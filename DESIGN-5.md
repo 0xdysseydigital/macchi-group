@@ -117,7 +117,7 @@ Clean, near-square. Refinement lives in spacing and hairlines.
 
 **The principals (about/team copy):**
 - **Tyler Macchi** — born and raised in Southwest Florida; unmatched local knowledge of the region's coastal communities.
-- **Brandon Macchi** — shaped by years inside some of the country's most exclusive golf clubs; rare insight into luxury lifestyles and private club living. *(Surname to confirm.)*
+- **Brandon Shirk** — shaped by years inside some of the country's most exclusive golf clubs; rare insight into luxury lifestyles and private club living.
 
 **Markets:** Naples, Bonita Springs, Fort Myers / Fort Myers Beach.
 
@@ -403,7 +403,7 @@ const body = localFont({
 - **Agent phone:** confirm `(239) 825-0700` for the secondary "or call" links (alt on file: 239-218-4825).
 - **MLS / IDX:** property search + live listings data source for a later phase.
 - **Hero video:** final top-down aerial surf/shoreline clip to be added at `/public/media/hero-coastline.mp4` (+ `hero-poster.jpg`). A different aerial coastline clip is embedded in the prototype as a stand-in; an optimized 1080p version + poster are in `/media`. Target ≤6–8s seamless loop, muted, ~1080p, H.264 faststart.
-- **Team:** confirm **Brandon Macchi**'s surname and each principal's title/role.
+- **Team:** confirm each principal's title/role.
 - **Imagery library:** property/neighborhood photo source; topographic placeholders used until then.
 - **Fonts:** Cormorant Upright (headers/wordmark) + Louize Regular (body) — locked. Body font file is a trial license (`LouizeTrial-Regular.otf`) — confirm/purchase the production license before launch.
 - **Branding:** Coldwell Banker co-branding degree + compliance text placement.
