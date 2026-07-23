@@ -1,11 +1,11 @@
 # THE MACCHI GROUP — Style Reference
-> Cartographic minimalism. A clean white canvas, an elegant high-contrast upright serif (Cormorant Upright) for the headers, a clean grotesque sans (Inter) for the body, and a single recurring idea — the topographic contour line — standing in for the coast itself. Restraint over decoration; the map is the brand.
+> Cartographic minimalism. A clean white canvas, an elegant high-contrast upright serif (Cormorant Upright) for the headers, a clean serif (Louize) for the body, and a single recurring idea — the topographic contour line — standing in for the coast itself. Restraint over decoration; the map is the brand.
 
 **Theme:** light
 **Stack:** Next.js (App Router) + Tailwind CSS v4. Fonts via `next/font/google`. Simple, mostly static — minimal motion, no heavy interactions.
 **Interim behavior / conversion:** primary CTAs route to a **lead-qualification quiz** at `/get-started` (a placeholder route until the quiz is built — buttons are non-functional placeholders for now). The agent's phone `(239) 825-0700` stays available as a secondary "or call" **text link** (not a button). Community rows and a few footer links point to placeholder `#` routes until those pages exist.
 
-The Macchi Group sells coastal Southwest Florida — Naples, Bonita Springs, Fort Myers / Fort Myers Beach. This system trades the dark luxury route for clean cartographic minimalism: a white paper canvas, generous whitespace, Cormorant Upright — a high-contrast upright serif — for headlines and the wordmark, and Inter — a clean grotesque sans set Regular — for body and everything functional. The signature creative element is the **topographic contour line** — real survey-style contours rendered as faint line art behind the hero and key moments — supported by small cartographic touches (coordinate labels, hairline rules). Color is used sparingly: near-black ink for type, Oxford navy as the secondary and the contour-line color, and gold as a rare precious accent. The result should feel like a beautifully printed coastal map: quiet, precise, premium.
+The Macchi Group sells coastal Southwest Florida — Naples, Bonita Springs, Fort Myers / Fort Myers Beach. This system trades the dark luxury route for clean cartographic minimalism: a white paper canvas, generous whitespace, Cormorant Upright — a high-contrast upright serif — for headlines and the wordmark, and Louize — a clean serif set Regular — for body and everything functional. The signature creative element is the **topographic contour line** — real survey-style contours rendered as faint line art behind the hero and key moments — supported by small cartographic touches (coordinate labels, hairline rules). Color is used sparingly: near-black ink for type, Oxford navy as the secondary and the contour-line color, and gold as a rare precious accent. The result should feel like a beautifully printed coastal map: quiet, precise, premium.
 
 ---
 
@@ -32,7 +32,7 @@ The Macchi Group sells coastal Southwest Florida — Naples, Bonita Springs, For
 
 ## Tokens — Typography
 
-> Headers are set in Cormorant Upright, a high-contrast upright serif. It ships **a single Regular weight with no bold and no italic** — so emphasis is carried by the navy color and scale, never by weight or italics. Caps need air: track headers out and keep copy concise so all-caps reads monumental, not shouty. Body stays small and calm in Inter, set Regular.
+> Headers are set in Cormorant Upright, a high-contrast upright serif. It ships **a single Regular weight with no bold and no italic** — so emphasis is carried by the navy color and scale, never by weight or italics. Caps need air: track headers out and keep copy concise so all-caps reads monumental, not shouty. Body stays small and calm in Louize, set Regular.
 
 ### Cormorant Upright — Display / header serif
 An upright-italic-structured serif: calligraphic skeleton with vertical stress, high contrast, elegant and distinctly editorial. Used for the hero wordmark, section headings, stat figures, community names, and prices. · `--font-display`
@@ -45,12 +45,12 @@ An upright-italic-structured serif: calligraphic skeleton with vertical stress, 
 - **Tracking:** +0.05em headings, **-0.08em at wordmark scale** (condensed, per Framer source), +0.2em for the small nav wordmark.
 - **Line height:** 1.2 at wordmark scale; 1.16–1.2 for multi-line headings.
 
-### Inter — Body, UI & cartographic labels (set REGULAR)
-A clean grotesque sans used at **Regular (400)** for a calm, functional body voice. Body copy, nav, buttons, captions, eyebrows, and coordinate labels. Pairs with Cormorant Upright as a serif-display / sans-body system — the two are distinguished by case, scale, and tracking rather than by contrasting serif styles. · `--font-body`
-- **Family:** Inter (variable, `wght` 100–900), loaded via `next/font/google` — but this system uses a **single weight — Regular (400) only**, mirroring the display face's single-weight rule.
+### Louize — Body, UI & cartographic labels (set REGULAR)
+A clean serif used at **Regular (400)** for a calm, editorial body voice — pairs with Cormorant Upright as a serif-display / serif-body system, the two distinguished by case, scale, and tracking rather than by a serif/sans contrast. Body copy, nav, buttons, captions, eyebrows, and coordinate labels. · `--font-body`
+- **Family:** Louize (provided as `LouizeTrial-Regular.otf`, a single static weight). This system uses **Regular (400) only**, mirroring the display face's single-weight rule. Substitute: Freight Text, Tiempos, Canela Text. *(Note: this is a trial-license file — confirm a production license before shipping to the live site.)*
 - **Weight role:** everything sits at **400 (Regular)** — body, nav links, addresses, micro-labels, buttons, prices' sub-text. With no weight variation to lean on, hierarchy is carried entirely by size, case, and tracking (uppercase + wider tracking for eyebrows/labels, larger size for lead text).
-- **Sizes:** 11px → 19px. Body ~15–17px, line-height ~1.7 (a touch tighter than a light serif needs; keep the slightly darker text color `--soft` for legibility on white).
-- **Arrows:** Inter includes a native `→` (U+2192) glyph, so a text character works directly — inline SVG (as provided in the prototype) remains a fine option where stroke-weight consistency with other icons matters.
+- **Sizes:** 11px → 19px. Body ~15–17px, line-height ~1.7 (keep the slightly darker text color `--soft` for legibility on white).
+- **Arrows:** confirm the `→` (U+2192) glyph is present in this font file before relying on a text character; inline SVG (as provided in the prototype) is the safe fallback if it's missing.
 - **Eyebrow role:** 11px, 400, UPPERCASE, +0.24em — separated from the display headings by its smaller size and wide tracking.
 - **Coordinate label:** 11–12px, 400, letter-spaced, dim-grey.
 
@@ -58,10 +58,10 @@ A clean grotesque sans used at **Regular (400)** for a calm, functional body voi
 
 | Role | Family | Size (clamp) | Line H | Tracking | Token |
 |------|--------|-------------|--------|----------|-------|
-| eyebrow | Inter 400 (caps) | 11px | 1.0 | +0.24em | `--text-eyebrow` |
-| caption | Inter 400 | 12px | 1.5 | +0.02em | `--text-caption` |
-| body | Inter 400 | 15–17px | 1.7 | normal | `--text-body` |
-| lead | Inter 400 | 17–19px | 1.6 | normal | `--text-lead` |
+| eyebrow | Louize 400 (caps) | 11px | 1.0 | +0.24em | `--text-eyebrow` |
+| caption | Louize 400 | 12px | 1.5 | +0.02em | `--text-caption` |
+| body | Louize 400 | 15–17px | 1.7 | normal | `--text-body` |
+| lead | Louize 400 | 17–19px | 1.6 | normal | `--text-lead` |
 | heading-sm | Cormorant Upright (caps) | 20–28px | 1.18 | +0.05em | `--text-heading-sm` |
 | heading | Cormorant Upright (caps) | 24–36px | 1.16 | +0.05em | `--text-heading` |
 | display | Cormorant Upright (caps) | 32–52px | 1.18 | +0.05em | `--text-display` |
@@ -142,7 +142,7 @@ Clean, near-square. Refinement lives in spacing and hairlines.
 ## Components
 
 ### Top Navigation
-Fixed, and **transparent over the hero** — white links, a white-outline `Get started` button, and **no wordmark** (the giant hero wordmark is doing that job). Past the hero (~72% viewport scrolled) it transitions to `rgba(255,255,255,.94)` + blur with a hairline bottom border: links turn ink, the CTA becomes a solid navy button, and the small Cormorant Upright wordmark (+0.2em tracking) fades in from the left. Transition ~0.4s. Links: Inter 13px/400 with an underline on hover.
+Fixed, and **transparent over the hero** — white links, a white-outline `Get started` button, and **no wordmark** (the giant hero wordmark is doing that job). Past the hero (~72% viewport scrolled) it transitions to `rgba(255,255,255,.94)` + blur with a hairline bottom border: links turn ink, the CTA becomes a solid navy button, and the small Cormorant Upright wordmark (+0.2em tracking) fades in from the left. Transition ~0.4s. Links: Louize 13px/400 with an underline on hover.
 
 ### Hero (full-viewport video + wordmark reveal)  ← signature moment
 The single most important composition on the site. Built from the Framer design.
@@ -173,22 +173,22 @@ The single most important composition on the site. Built from the Framer design.
 ```
 
 ### Eyebrow / Coordinate Label
-Inter 11px, 400, uppercase, +0.24em, navy or dim-grey, optionally preceded by a short hairline or gold tick.
+Louize 11px, 400, uppercase, +0.24em, navy or dim-grey, optionally preceded by a short hairline or gold tick.
 
 ### Stat Row
-Three figures (`$197.75M+`, `150+`, `TOP 1%`) in Cormorant Upright caps at restrained scale, ink with the unit/percent in navy, and Inter 400 uppercase labels beneath and thin hairline dividers between. Generous spacing; on white or mist.
+Three figures (`$197.75M+`, `150+`, `TOP 1%`) in Cormorant Upright caps at restrained scale, ink with the unit/percent in navy, and Louize 400 uppercase labels beneath and thin hairline dividers between. Generous spacing; on white or mist.
 
 ### Property Card
-White card, 1px hairline, 3px radius. Image area on top (0px radius). Below, comfortable padding: status label (`FOR SALE` in navy or gold), price in Cormorant Upright caps ~22px ink, address in Inter 400 ~15px dim-grey, bed/bath/sqft caption (12px) with thin dividers. A quiet **Inquire** phone link. Until photography is wired in, use a mist placeholder with a faint topographic motif.
+White card, 1px hairline, 3px radius. Image area on top (0px radius). Below, comfortable padding: status label (`FOR SALE` in navy or gold), price in Cormorant Upright caps ~22px ink, address in Louize 400 ~15px dim-grey, bed/bath/sqft caption (12px) with thin dividers. A quiet **Inquire** phone link. Until photography is wired in, use a mist placeholder with a faint topographic motif.
 
 ### Community List
-Cartographic index: each row is a community name in Cormorant Upright caps with its region + (optional) coordinate in an Inter caption, separated by hairlines. A small **→** affordance; minimal hover (color shift only). Reads like a map legend.
+Cartographic index: each row is a community name in Cormorant Upright caps with its region + (optional) coordinate in a Louize caption, separated by hairlines. A small **→** affordance; minimal hover (color shift only). Reads like a map legend.
 
 ### CTA Band
-White or mist with one faint topographic instance. Cormorant Upright caps heading (emphasis word in navy), short Inter (Regular) lead, and a primary `Get started` button to the quiz, with a small "or call" phone text link beneath.
+White or mist with one faint topographic instance. Cormorant Upright caps heading (emphasis word in navy), short Louize (Regular) lead, and a primary `Get started` button to the quiz, with a small "or call" phone text link beneath.
 
 ### Buttons / Controls (primary CTAs → quiz `/get-started`)
-- **Primary:** navy fill, paper label, Inter 400 13px, +0.1em, 3px radius. Hover: ink fill.
+- **Primary:** navy fill, paper label, Louize 400 13px, +0.1em, 3px radius. Hover: ink fill.
 - **Secondary:** ink label, 1px hairline border; hover border→navy.
 - **Text link:** ink/navy with a thin underline; gold underline for the rare accent.
 - **"or call" link:** the phone is a small secondary **text link** beneath the primary button (`or call (239) 825-0700`), never a styled button — quiz is the primary path.
@@ -206,7 +206,7 @@ White, 1px hairline top. Columns: wordmark + line; nav anchors; contact (phone �
 - Use the topographic contour as the one signature element — quiet, navy, low opacity.
 - Set headlines in Cormorant Upright caps; carry emphasis with weight 600 + navy (no italic exists).
 - Keep type small and restrained; track Cormorant Upright caps out and keep headings concise.
-- Set body in Inter Regular (400) throughout — one weight only, so let case, size, and tracking carry emphasis instead of weight, same as the display face.
+- Set body in Louize Regular (400) throughout — one weight only, so let case, size, and tracking carry emphasis instead of weight, same as the display face.
 - Add cartographic touches (coordinates, hairlines) sparingly for flavor.
 - Point every CTA at the phone number for now.
 
@@ -217,7 +217,7 @@ White, 1px hairline top. Columns: wordmark + line; nav anchors; contact (phone �
 - Don't add scroll animations, parallax, or other "bells and whistles" — the hero wordmark reveal is the *only* animation on the site.
 - Don't crowd; don't shrink the section padding to fit more in.
 - Don't set body copy or long sentences in Cormorant Upright caps; don't track it negative; don't fake an italic.
-- Don't mix in a second body weight — Inter stays Regular (400) everywhere; carry emphasis with case/size/tracking, never bold.
+- Don't mix in a second body weight — Louize stays Regular (400) everywhere; carry emphasis with case/size/tracking, never bold.
 
 ---
 
@@ -252,13 +252,13 @@ Simple single-column vertical scroll with abundant whitespace: **hero (full-view
 - secondary + contour lines: `#002E5C` (navy)
 - accent: `#DFAD38` (gold) — rare hairline/tick only
 - primary CTAs → quiz `/get-started` (placeholder); phone `(239) 825-0700` = secondary "or call" text link
-- type: Cormorant Upright (display, CAPS, single weight; emphasis via navy) + Inter Regular (body/UI sans, 400 throughout); eyebrows 11px uppercase +0.24em; arrows as native → or inline SVG
+- type: Cormorant Upright (display, CAPS, single weight; emphasis via navy) + Louize Regular (body/UI serif, 400 throughout); eyebrows 11px uppercase +0.24em; arrows as inline SVG (confirm native → glyph before relying on text)
 
 **Example component prompts**
 1. **Hero:** Full-viewport (100svh) looping muted autoplay aerial surf video, `object-fit:cover`, with a light top scrim and a diagonal bottom-left scrim. Anchored bottom-left at the page gutter: a small white coordinate label, then the wordmark `THE / MACCHI / GROUP` on three lines in Cormorant Upright caps, white, clamp(3.5rem,13.5vw,14.0625rem), line-height 1.2, tracking -0.08em. Each line masked in an `overflow:hidden` wrapper and animated from `translateY(108%)` to 0 over 1.15s `cubic-bezier(.16,.84,.44,1)`, staggered .15/.29/.43s. Small `SCROLL` cue bottom-right fading in at .95s. No buttons in the hero. Honor prefers-reduced-motion (render in place).
-2. **Stat row:** Three Cormorant Upright caps figures ($197.75M+, 150+, TOP 1%) in ink (unit/percent in navy) with Inter 400 uppercase labels and hairline dividers, generous spacing, white background.
-3. **Community index:** Hairline-separated rows; each row a Cormorant Upright caps community name + Inter region/coordinate caption and a small → ; minimal color-shift hover.
-4. **Primary button:** Navy fill, paper label, Inter 400 13px +0.08em, 3px radius, hover→ink fill, 2px navy focus ring; href `/get-started` (the lead-qualification quiz).
+2. **Stat row:** Three Cormorant Upright caps figures ($197.75M+, 150+, TOP 1%) in ink (unit/percent in navy) with Louize 400 uppercase labels and hairline dividers, generous spacing, white background.
+3. **Community index:** Hairline-separated rows; each row a Cormorant Upright caps community name + Louize region/coordinate caption and a small → ; minimal color-shift hover.
+4. **Primary button:** Navy fill, paper label, Louize 400 13px +0.08em, 3px radius, hover→ink fill, 2px navy focus ring; href `/get-started` (the lead-qualification quiz).
 
 ---
 
@@ -288,7 +288,7 @@ Simple single-column vertical scroll with abundant whitespace: **hero (full-view
 
   /* Fonts */
   --font-display: "Cormorant Upright", Georgia, serif;
-  --font-body: "Inter", Arial, "Helvetica Neue", sans-serif;
+  --font-body: "Louize", Georgia, "Times New Roman", serif;
 
   /* Type scale (clamped) */
   --text-eyebrow: 0.6875rem;   /* 11px, uppercase, +0.24em */
@@ -341,7 +341,7 @@ Simple single-column vertical scroll with abundant whitespace: **hero (full-view
   --color-gold: #DFAD38;
 
   --font-display: "Cormorant Upright", Georgia, serif;
-  --font-body: "Inter", Arial, sans-serif;
+  --font-body: "Louize", Georgia, serif;
 
   --radius-card: 3px;
   --radius-button: 3px;
@@ -351,19 +351,20 @@ Simple single-column vertical scroll with abundant whitespace: **hero (full-view
 ### Next.js font setup (`app/layout.tsx`)
 ```ts
 import localFont from "next/font/local";
-import { Inter } from "next/font/google";
 
-// Display face is local + variable; body face is Google-hosted, pinned to Regular only.
+// Both faces are local, single-weight files.
 const display = localFont({
   src: "./fonts/CormorantUpright-Regular.ttf",
   weight: "400", display: "swap", variable: "--font-display",
 });
-const body = Inter({
-  subsets: ["latin"], weight: "400", display: "swap", variable: "--font-body",
+const body = localFont({
+  src: "./fonts/LouizeTrial-Regular.otf",
+  weight: "400", display: "swap", variable: "--font-body",
 });
 // add `${display.variable} ${body.variable}` to <html>
 // Display type is set uppercase via `text-transform`; pin `font-weight:400` + `font-synthesis-weight:none` (single-weight font).
-// Body weight = 400 (Regular) everywhere — no light/medium split. Arrows render as a native → glyph or inline SVG.
+// Body weight = 400 (Regular) everywhere — no light/medium split. Arrows render as inline SVG unless the → glyph is confirmed present.
+// NOTE: LouizeTrial-Regular.otf is a trial-license file — swap in the licensed version before production launch.
 ```
 
 ### Topographic SVG usage
@@ -404,5 +405,5 @@ const body = Inter({
 - **Hero video:** final top-down aerial surf/shoreline clip to be added at `/public/media/hero-coastline.mp4` (+ `hero-poster.jpg`). A different aerial coastline clip is embedded in the prototype as a stand-in; an optimized 1080p version + poster are in `/media`. Target ≤6–8s seamless loop, muted, ~1080p, H.264 faststart.
 - **Team:** confirm **Brandon Macchi**'s surname and each principal's title/role.
 - **Imagery library:** property/neighborhood photo source; topographic placeholders used until then.
-- **Fonts:** Cormorant Upright (headers/wordmark) + Inter Regular (body) — locked.
+- **Fonts:** Cormorant Upright (headers/wordmark) + Louize Regular (body) — locked. Body font file is a trial license (`LouizeTrial-Regular.otf`) — confirm/purchase the production license before launch.
 - **Branding:** Coldwell Banker co-branding degree + compliance text placement.

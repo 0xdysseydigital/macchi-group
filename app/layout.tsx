@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
 const display = localFont({
@@ -10,8 +9,8 @@ const display = localFont({
   variable: "--font-display",
 });
 
-const body = Inter({
-  subsets: ["latin"],
+const body = localFont({
+  src: "./fonts/LouizeTrial-Regular.otf",
   weight: "400",
   display: "swap",
   variable: "--font-body",

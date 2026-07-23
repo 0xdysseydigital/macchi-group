@@ -67,7 +67,7 @@
 body {
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-body), Arial, "Helvetica Neue", sans-serif;
+  font-family: var(--font-body), Georgia, "Times New Roman", serif;
 }
 
 .font-display {
@@ -160,7 +160,7 @@ body {
   position: absolute;
   right: var(--gutter);
   bottom: clamp(48px, 6vw, 86px);
-  font-family: var(--font-body), Arial, sans-serif;
+  font-family: var(--font-body), Georgia, serif;
   font-size: var(--text-eyebrow);
   text-transform: uppercase;
   letter-spacing: 0.24em;
