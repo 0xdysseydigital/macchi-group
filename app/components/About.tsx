@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import RevealParagraph from "./RevealParagraph";
 import Stats from "./Stats";
 
 const TEAM = [
@@ -29,26 +30,20 @@ const TEAM = [
 export default function About() {
   return (
     <section className="about">
-      <div className="about__inner">
+      <div className="about__top">
         <div className="about__intro">
           <p className="eyebrow">Boutique &middot; Southwest Florida</p>
           <h2 className="about__heading">
             More than a <em>transaction</em>
           </h2>
-          <p className="about__lead">
-            Southwest Florida&apos;s coast is more than our market — it&apos;s
-            home. We&apos;ve watched Naples, Bonita Springs, and Fort Myers
-            grow from the inside, and that closeness shows up in every
-            recommendation we make, from the right block to the right moment
-            to make an offer.
-          </p>
-          <p className="about__lead">
-            The Macchi Group was built on a simple belief: real estate is a
-            long-term partnership, not a single transaction. Clients get
-            strategic guidance grounded in real market fluency, a discreet
-            and highly personalized experience, and a level of commitment
-            that doesn&apos;t end at closing.
-          </p>
+          <RevealParagraph
+            className="about__lead"
+            text="Southwest Florida's coast is more than our market — it's home. We've watched Naples, Bonita Springs, and Fort Myers grow from the inside, and that closeness shows up in every recommendation we make, from the right block to the right moment to make an offer."
+          />
+          <RevealParagraph
+            className="about__lead"
+            text="The Macchi Group was built on a simple belief: real estate is a long-term partnership, not a single transaction. Clients get strategic guidance grounded in real market fluency, a discreet and highly personalized experience, and a level of commitment that doesn't end at closing."
+          />
 
           <Link href="/about" className="btn btn--secondary about__cta">
             About the group
@@ -57,6 +52,10 @@ export default function About() {
           <Stats />
         </div>
 
+        <div className="about__image" aria-hidden />
+      </div>
+
+      <div className="about__team-wrap">
         <div className="about__team">
           {TEAM.map((member) => (
             <article className="team-card" key={member.name}>

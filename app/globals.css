@@ -86,6 +86,35 @@ body {
   color: var(--color-navy);
 }
 
+/* Scroll-triggered per-word reveal */
+
+.reveal-word {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.reveal-word__inner {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition:
+    transform 0.7s cubic-bezier(0.16, 0.84, 0.44, 1),
+    opacity 0.5s ease;
+}
+
+.reveal-word__inner.is-active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-word__inner {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
 /* Hero */
 
 .hero {
@@ -204,22 +233,28 @@ body {
 /* About */
 
 .about {
-  padding: var(--section-pad) var(--gutter);
   background: var(--color-paper);
+  padding-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
 }
 
-.about__inner {
-  max-width: var(--page-max);
-  margin: 0 auto;
+.about__top {
   display: grid;
-  grid-template-columns: minmax(240px, 380px) 1fr;
-  gap: var(--space-96);
+  grid-template-columns: minmax(280px, 620px) 1fr;
+  align-items: stretch;
 }
 
 .about__intro {
-  position: sticky;
-  top: var(--space-40);
-  align-self: start;
+  padding: 0 var(--space-96) 0 var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about__image {
+  position: relative;
+  min-height: 480px;
+  background: linear-gradient(160deg, var(--color-mist) 0%, #dde5e9 100%);
 }
 
 .about__heading {
@@ -257,6 +292,12 @@ body {
   margin-top: var(--space-40);
 }
 
+.about__team-wrap {
+  max-width: var(--page-max);
+  margin: var(--space-96) auto 0;
+  padding: 0 var(--gutter);
+}
+
 .about__team {
   display: flex;
   flex-direction: column;
@@ -266,6 +307,7 @@ body {
 .team-card {
   display: grid;
   grid-template-columns: minmax(160px, 260px) 1fr;
+  max-width: 880px;
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-card);
   overflow: hidden;
@@ -345,19 +387,27 @@ body {
 }
 
 @media (max-width: 860px) {
-  .about__inner {
+  .about__top {
     grid-template-columns: 1fr;
-    gap: var(--space-64);
   }
 
   .about__intro {
-    position: static;
+    padding: var(--space-64) var(--gutter) 0;
+  }
+
+  .about__image {
+    min-height: 360px;
+  }
+
+  .about__team-wrap {
+    margin-top: var(--space-64);
   }
 }
 
 @media (max-width: 560px) {
   .team-card {
     grid-template-columns: 1fr;
+    max-width: none;
   }
 
   .team-card__image {
