@@ -10,9 +10,10 @@ export default function SmoothScroll() {
     }
 
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => 1 - Math.pow(1 - t, 3),
+      duration: 0.7,
+      easing: (t) => 1 - Math.pow(1 - t, 2),
       smoothWheel: true,
+      wheelMultiplier: 1,
     });
 
     let frame: number;

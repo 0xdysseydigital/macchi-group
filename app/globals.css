@@ -238,25 +238,20 @@ body {
 .about {
   background: var(--color-paper);
   padding-bottom: var(--section-pad);
+  --about-indent: clamp(32px, 9vw, 180px);
 }
 
 .about__top {
-  display: grid;
-  grid-template-columns: minmax(280px, 620px) 1fr;
-  align-items: stretch;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--section-pad) var(--gutter) 0
+    calc(var(--gutter) + var(--about-indent));
 }
 
 .about__intro {
-  padding: var(--section-pad) var(--space-96) 0 var(--gutter);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-.about__image {
-  position: relative;
-  min-height: 480px;
-  background: linear-gradient(160deg, var(--color-mist) 0%, #dde5e9 100%);
+  max-width: 620px;
 }
 
 .about__heading {
@@ -297,7 +292,19 @@ body {
 .about__team-wrap {
   max-width: var(--page-max);
   margin: var(--space-96) auto 0;
-  padding: 0 var(--gutter);
+  padding: 0 var(--gutter) 0 calc(var(--gutter) + var(--about-indent));
+}
+
+.about__team-heading {
+  margin: 0 0 var(--space-24);
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-synthesis-weight: none;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  font-size: var(--text-heading-sm);
+  line-height: 1.16;
+  letter-spacing: 0.05em;
 }
 
 .about__team {
@@ -389,16 +396,12 @@ body {
 }
 
 @media (max-width: 860px) {
+  .about {
+    --about-indent: 0px;
+  }
+
   .about__top {
-    grid-template-columns: 1fr;
-  }
-
-  .about__intro {
-    padding: var(--space-64) var(--gutter) 0;
-  }
-
-  .about__image {
-    min-height: 360px;
+    padding-top: var(--space-64);
   }
 
   .about__team-wrap {
