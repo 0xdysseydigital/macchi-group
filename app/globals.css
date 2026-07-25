@@ -545,9 +545,17 @@ html:not(.is-loaded) body {
   top: 0;
   height: 100svh;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--color-paper);
+}
+
+.cta__frame {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  top: 96px;
+  bottom: 96px;
+  overflow: hidden;
+  will-change: top, bottom;
 }
 
 .cta__image {
@@ -555,7 +563,6 @@ html:not(.is-loaded) body {
   inset: 0;
   width: 100%;
   height: 100%;
-  will-change: transform;
 }
 
 .cta__scrim {
@@ -570,14 +577,17 @@ html:not(.is-loaded) body {
 }
 
 .cta__content {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
   max-width: 640px;
+  margin: 0 auto;
   padding: 0 var(--gutter);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .cta__heading {
@@ -647,17 +657,6 @@ html:not(.is-loaded) body {
   background: transparent;
   color: var(--color-ink);
   border: 1px solid var(--color-hairline);
-}
-
-.btn--gold {
-  background: var(--color-gold);
-  color: var(--color-navy);
-  border: 1px solid var(--color-gold);
-}
-
-.btn--gold:hover {
-  background: #f0c15a;
-  border-color: #f0c15a;
 }
 
 .btn--secondary:hover {

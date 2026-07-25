@@ -9,6 +9,7 @@ export default function RevealParagraph({
   startDelay = 150,
   as = "p",
   emphasize = [],
+  active: activeProp,
 }: {
   text: string;
   className?: string;
@@ -16,11 +17,17 @@ export default function RevealParagraph({
   startDelay?: number;
   as?: "p" | "h2";
   emphasize?: string[];
+  /** When provided, the parent drives activation instead of the built-in viewport observer. */
+  active?: boolean;
 }) {
   const ref = useRef<HTMLHeadingElement & HTMLParagraphElement>(null);
-  const [active, setActive] = useState(false);
+  const [activeState, setActiveState] = useState(false);
+  const controlled = activeProp !== undefined;
+  const active = controlled ? activeProp : activeState;
 
   useEffect(() => {
+    if (controlled) return;
+
     const el = ref.current;
     if (!el) return;
 
@@ -29,7 +36,7 @@ export default function RevealParagraph({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          timeout = setTimeout(() => setActive(true), startDelay);
+          timeout = setTimeout(() => setActiveState(true), startDelay);
           observer.disconnect();
         }
       },
@@ -41,7 +48,7 @@ export default function RevealParagraph({
       observer.disconnect();
       clearTimeout(timeout);
     };
-  }, [startDelay]);
+  }, [startDelay, controlled]);
 
   const words = text.split(" ");
   const emphasizeSet = new Set(emphasize.map((w) => w.toLowerCase()));

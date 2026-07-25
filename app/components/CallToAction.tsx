@@ -1,24 +1,27 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Reveal from "./Reveal";
+import RevealParagraph from "./RevealParagraph";
 
-const MAX_SCALE = 1.25;
+const INITIAL_INSET = 96;
+const TEXT_THRESHOLD = 0.3;
 
 export default function CallToAction() {
   const sectionRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [textActive, setTextActive] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setTextActive(true);
       return;
     }
 
     const section = sectionRef.current;
-    const image = imageRef.current;
-    if (!section || !image) return;
+    const frame = frameRef.current;
+    if (!section || !frame) return;
 
     let ticking = false;
 
@@ -29,8 +32,12 @@ export default function CallToAction() {
       if (total <= 0) return;
 
       const progress = Math.min(Math.max(-rect.top / total, 0), 1);
-      const scale = 1 + progress * (MAX_SCALE - 1);
-      image.style.transform = `scale(${scale})`;
+      const inset = INITIAL_INSET * (1 - progress);
+      frame.style.top = `${inset}px`;
+      frame.style.bottom = `${inset}px`;
+
+      const shouldShowText = progress > TEXT_THRESHOLD;
+      setTextActive((prev) => (prev === shouldShowText ? prev : shouldShowText));
     };
 
     const onScroll = () => {
@@ -48,29 +55,37 @@ export default function CallToAction() {
   return (
     <section className="cta" ref={sectionRef}>
       <div className="cta__stage">
-        <div className="cta__image" ref={imageRef}>
-          <Image
-            src="/images/cta/beachfront.jpg"
-            alt="Beachfront homes along the Southwest Florida coast at dusk"
-            fill
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
-          />
+        <div className="cta__frame" ref={frameRef}>
+          <div className="cta__image">
+            <Image
+              src="/images/cta/beachfront.jpg"
+              alt="Beachfront homes along the Southwest Florida coast at dusk"
+              fill
+              sizes="100vw"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="cta__scrim" aria-hidden />
         </div>
-        <div className="cta__scrim" aria-hidden />
 
-        <Reveal className="cta__content">
-          <h2 className="cta__heading">
-            Let&apos;s find your place on the coast
-          </h2>
-          <p className="cta__text">
-            Tell us what you&apos;re looking for and a member of the Macchi
-            Group will be in touch.
-          </p>
-          <Link href="/contact" className="btn btn--gold cta__button">
-            Start the conversation
-          </Link>
-        </Reveal>
+        <div className="cta__content">
+          <RevealParagraph
+            as="h2"
+            className="cta__heading"
+            text="Let's find your home on the coast"
+            active={textActive}
+          />
+          <RevealParagraph
+            className="cta__text"
+            text="Tell us what you're looking for and a member of the Macchi Group will be in touch."
+            active={textActive}
+          />
+          <div className={`reveal-block${textActive ? " is-active" : ""}`}>
+            <Link href="/contact" className="btn btn--primary cta__button">
+              Start the conversation
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
