@@ -70,6 +70,79 @@ body {
   font-family: var(--font-body), Georgia, "Times New Roman", serif;
 }
 
+html:not(.is-loaded),
+html:not(.is-loaded) body {
+  overflow: hidden;
+}
+
+/* Full-screen loader */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-navy);
+  transition: opacity 0.5s ease;
+}
+
+.loader--fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader__ring {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader__ring::before,
+.loader__ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+}
+
+.loader__ring::before {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.loader__ring::after {
+  border-top-color: #fff;
+  border-right-color: #fff;
+  animation: loader-spin 1s linear infinite;
+}
+
+.loader__mark {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-synthesis-weight: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader__ring::after {
+    animation: none;
+  }
+}
+
 .font-display {
   font-family: var(--font-display), Georgia, serif;
   font-weight: 400;
@@ -199,6 +272,12 @@ body {
   display: block;
   transform: translateY(var(--reveal-offset));
   animation: rise var(--reveal-duration) var(--reveal-ease) forwards;
+  animation-play-state: paused;
+}
+
+.is-loaded .rv > span,
+.is-loaded .hero__scroll {
+  animation-play-state: running;
 }
 
 .rv:nth-child(1) > span {
@@ -223,6 +302,7 @@ body {
   opacity: 0;
   animation: hero-fade 0.6s ease forwards;
   animation-delay: 0.95s;
+  animation-play-state: paused;
 }
 
 @keyframes rise {
