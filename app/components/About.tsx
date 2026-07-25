@@ -52,7 +52,16 @@ export default function About() {
           <Stats />
         </div>
 
-        <div className="about__image" aria-hidden />
+        <div className="about__image">
+          <Image
+            src="/images/about/naples-5th.jpg"
+            alt="Fifth Avenue South, Naples, Florida"
+            fill
+            sizes="(max-width: 900px) 100vw, 50vw"
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </div>
       </div>
 
       <div className="about__team-wrap">

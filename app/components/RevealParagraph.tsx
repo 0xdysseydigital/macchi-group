@@ -6,10 +6,12 @@ export default function RevealParagraph({
   text,
   className = "",
   delayStep = 0.025,
+  startDelay = 150,
 }: {
   text: string;
   className?: string;
   delayStep?: number;
+  startDelay?: number;
 }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const [active, setActive] = useState(false);
@@ -18,10 +20,12 @@ export default function RevealParagraph({
     const el = ref.current;
     if (!el) return;
 
+    let timeout: ReturnType<typeof setTimeout>;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setActive(true);
+          timeout = setTimeout(() => setActive(true), startDelay);
           observer.disconnect();
         }
       },
@@ -29,8 +33,11 @@ export default function RevealParagraph({
     );
 
     observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeout);
+    };
+  }, [startDelay]);
 
   const words = text.split(" ");
 

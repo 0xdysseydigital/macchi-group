@@ -128,11 +128,11 @@ body {
 
 .hero__video {
   position: absolute;
-  top: -32%;
+  top: -52%;
   left: 0;
   right: 0;
   width: 100%;
-  height: 164%;
+  height: 204%;
   object-fit: cover;
   will-change: transform;
 }
@@ -237,7 +237,6 @@ body {
 
 .about {
   background: var(--color-paper);
-  padding-top: var(--section-pad);
   padding-bottom: var(--section-pad);
 }
 
@@ -248,7 +247,7 @@ body {
 }
 
 .about__intro {
-  padding: 0 var(--space-96) 0 var(--gutter);
+  padding: var(--section-pad) var(--space-96) 0 var(--gutter);
   display: flex;
   flex-direction: column;
   justify-content: center;

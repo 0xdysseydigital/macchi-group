@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const PARALLAX_SPEED = 0.3;
+const PARALLAX_SPEED = 0.5;
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
