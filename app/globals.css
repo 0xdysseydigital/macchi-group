@@ -471,12 +471,19 @@ body {
 
 .stats__item {
   padding: var(--space-24) 0;
-  border-top: 1px solid var(--color-hairline);
   text-align: left;
 }
 
-.stats__item:last-child {
-  border-bottom: 1px solid var(--color-hairline);
+.stats__item + .stats__item {
+  border-top: 1px solid var(--color-hairline);
+}
+
+.stats__rule {
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-bottom: var(--space-16);
+  background: var(--color-gold);
 }
 
 .stats__figure {
@@ -484,10 +491,10 @@ body {
   font-family: var(--font-body), Georgia, serif;
   font-weight: 400;
   text-transform: uppercase;
-  font-size: var(--text-heading-sm);
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-  color: var(--color-ink);
+  font-size: var(--text-numeral);
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: var(--color-navy);
   font-variant-numeric: tabular-nums;
 }
 
