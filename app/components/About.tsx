@@ -51,10 +51,7 @@ export default function About() {
 
           <Stats />
         </div>
-      </div>
 
-      <div className="about__team-wrap">
-        <h2 className="about__team-heading">Meet the Team</h2>
         <div className="about__team">
           {TEAM.map((member) => (
             <article className="team-card" key={member.name}>
@@ -64,7 +61,7 @@ export default function About() {
                     src={member.image}
                     alt={member.name}
                     fill
-                    sizes="(max-width: 560px) 100vw, 260px"
+                    sizes="(max-width: 560px) 100vw, 360px"
                     style={{ objectFit: "cover" }}
                   />
                 )}
