@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const HOLD_MS = 1100;
+const HOLD_MS = 1400;
 const FADE_MS = 500;
 
 export default function Loader() {
@@ -40,6 +40,10 @@ export default function Loader() {
       aria-label="Loading"
     >
       <div className="loader__ring" aria-hidden>
+        <svg className="loader__ring-svg" viewBox="0 0 88 88">
+          <circle className="loader__ring-track" cx="44" cy="44" r="40" />
+          <circle className="loader__ring-fill" cx="44" cy="44" r="40" />
+        </svg>
         <span className="loader__mark">M</span>
       </div>
     </div>
