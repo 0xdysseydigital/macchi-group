@@ -119,23 +119,25 @@ html:not(.is-loaded) body {
 .loader__ring-track,
 .loader__ring-fill {
   fill: none;
-  stroke-width: 1.5;
 }
 
 .loader__ring-track {
   stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 1.5;
 }
 
 .loader__ring-fill {
   stroke: #fff;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-dasharray: 251.3;
   stroke-dashoffset: 251.3;
-  animation: loader-fill 1.6s ease-in-out infinite alternate;
+  animation: loader-fill 0.5s ease-in-out infinite alternate;
 }
 
 .loader__mark {
   position: relative;
+  display: flex;
   font-family: var(--font-display), Georgia, serif;
   font-weight: 400;
   font-synthesis-weight: none;
@@ -143,6 +145,10 @@ html:not(.is-loaded) body {
   color: #fff;
   font-size: 1.75rem;
   line-height: 1;
+}
+
+.loader__mark-g {
+  margin-left: -0.22em;
 }
 
 @keyframes loader-fill {
