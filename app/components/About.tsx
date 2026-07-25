@@ -41,7 +41,11 @@ export default function About() {
           />
           <RevealParagraph
             className="about__lead"
-            text="Naples, Bonita Springs, and Fort Myers aren't just where we work — they're home. That local knowledge shapes every recommendation we make, backed by a level of care that lasts well beyond closing day."
+            text="Southwest Florida's coast is more than our market — it's home. We've watched Naples, Bonita Springs, and Fort Myers grow from the inside, and that closeness shows up in every recommendation we make, from the right block to the right moment to make an offer."
+          />
+          <RevealParagraph
+            className="about__lead"
+            text="The Macchi Group was built on a simple belief: real estate is a long-term partnership, not a single transaction. Clients get strategic guidance grounded in real market fluency, a discreet and highly personalized experience, and a level of commitment that doesn't end at closing."
           />
 
           <Link href="/about" className="btn btn--secondary about__cta">

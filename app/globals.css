@@ -257,11 +257,10 @@ body {
 .about__top {
   max-width: var(--page-max);
   margin: 0 auto;
-  padding-left: clamp(40px, 9vw, 180px);
   display: grid;
-  grid-template-columns: minmax(300px, 460px) 1fr;
-  gap: clamp(88px, 13vw, 220px);
-  align-items: center;
+  grid-template-columns: minmax(320px, 560px) 1fr;
+  gap: clamp(64px, 10vw, var(--space-180));
+  align-items: start;
 }
 
 .about__intro {
@@ -295,7 +294,11 @@ body {
   font-size: var(--text-lead);
   line-height: 1.65;
   color: var(--color-soft);
-  max-width: 40ch;
+  max-width: 48ch;
+}
+
+.about__lead + .about__lead {
+  margin-top: var(--space-16);
 }
 
 .about__cta {
@@ -399,7 +402,6 @@ body {
 
   .about__top {
     grid-template-columns: 1fr;
-    padding-left: 0;
     gap: var(--space-64);
   }
 
