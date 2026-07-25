@@ -33,20 +33,15 @@ export default function About() {
     <section className="about">
       <div className="about__top">
         <div className="about__intro">
-          <p className="eyebrow">
-            Boutique Real Estate &middot; Naples, Bonita Springs &amp; Fort
-            Myers
-          </p>
-          <h2 className="about__heading">
-            Southwest Florida real estate, made <em>personal</em>
-          </h2>
           <RevealParagraph
-            className="about__lead"
-            text="Naples, Bonita Springs, and Fort Myers aren't just where we sell real estate — they're home. As local Southwest Florida real estate agents, we've watched this coastline grow from the inside, and that closeness shapes every recommendation we make, from the right neighborhood to the right moment to make an offer."
+            as="h2"
+            className="about__heading"
+            text="Southwest Florida, made personal"
+            emphasize={["personal"]}
           />
           <RevealParagraph
             className="about__lead"
-            text="The Macchi Group was built on a simple belief: real estate is a long-term partnership, not a single transaction. Every client working with our boutique Naples real estate team gets strategic guidance grounded in real market fluency, a discreet and highly personalized experience, and a level of commitment that doesn't end at closing."
+            text="Naples, Bonita Springs, and Fort Myers aren't just where we work — they're home. That local knowledge shapes every recommendation we make, backed by a level of care that lasts well beyond closing day."
           />
 
           <Link href="/about" className="btn btn--secondary about__cta">
