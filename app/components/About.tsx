@@ -22,9 +22,9 @@ const TEAM = [
   {
     name: "Luke Groff",
     role: "Operations Manager",
-    bio: "Luke's background is in a rapidly growing restaurant group in Pennsylvania, where digital marketing skills turned into hands-on experience launching and operating new restaurant concepts from the ground up. That same builder's instinct now shapes how The Macchi Group tells its story and reaches new clients.",
+    bio: "Luke helped grow a Pennsylvania restaurant group from one location to four in just two years, launching new concepts and sharpening the ones already running. That same builder's instinct now shapes how The Macchi Group tells its story and reaches new clients.",
     href: "/team/luke-groff",
-    image: null,
+    image: "/images/team/luke-groff.jpg",
   },
 ];
 
@@ -36,8 +36,8 @@ export default function About() {
           <RevealParagraph
             as="h2"
             className="about__heading"
-            text="Southwest Florida, made personal"
-            emphasize={["personal"]}
+            text="Real estate, built on relationships"
+            emphasize={["relationships"]}
           />
           <RevealParagraph
             className="about__lead"
@@ -57,7 +57,7 @@ export default function About() {
 
         <div className="about__team">
           {TEAM.map((member, i) => (
-            <Reveal key={member.name} delay={500 + i * 160}>
+            <Reveal key={member.name} delay={280 + i * 90}>
               <article className="team-card">
                 <div className="team-card__image">
                   {member.image && (
