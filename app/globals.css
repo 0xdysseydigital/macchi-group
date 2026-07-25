@@ -114,6 +114,7 @@ html:not(.is-loaded) body {
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
+  animation: loader-rotate 2.2s linear infinite;
 }
 
 .loader__ring-track,
@@ -130,9 +131,7 @@ html:not(.is-loaded) body {
   stroke: #fff;
   stroke-width: 1;
   stroke-linecap: round;
-  stroke-dasharray: 251.3;
-  stroke-dashoffset: 251.3;
-  animation: loader-fill 0.5s ease-in-out infinite alternate;
+  animation: loader-dash 1.7s ease-in-out infinite;
 }
 
 .loader__mark {
@@ -151,14 +150,30 @@ html:not(.is-loaded) body {
   margin-left: -0.22em;
 }
 
-@keyframes loader-fill {
+@keyframes loader-rotate {
   to {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes loader-dash {
+  0% {
+    stroke-dasharray: 2 260;
     stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 178 260;
+    stroke-dashoffset: -70;
+  }
+  100% {
+    stroke-dasharray: 178 260;
+    stroke-dashoffset: -248;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .loader__ring-fill {
+  .loader__ring-fill,
+  .loader__ring-svg {
     animation: none;
   }
 
