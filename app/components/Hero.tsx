@@ -1,8 +1,50 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+const PARALLAX_SPEED = 0.3;
+
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const hero = heroRef.current;
+    const video = videoRef.current;
+    if (!hero || !video) return;
+
+    let ticking = false;
+
+    const applyOffset = () => {
+      ticking = false;
+      const rect = hero.getBoundingClientRect();
+      if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+
+      const scrolled = Math.min(Math.max(0, -rect.top), rect.height);
+      video.style.transform = `translate3d(0, ${scrolled * PARALLAX_SPEED}px, 0)`;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(applyOffset);
+      }
+    };
+
+    applyOffset();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="hero">
+    <header className="hero" ref={heroRef}>
       <video
         className="hero__video"
+        ref={videoRef}
         autoPlay
         muted
         loop
