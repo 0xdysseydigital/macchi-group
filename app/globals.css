@@ -369,8 +369,7 @@ html:not(.is-loaded) body {
 
 .about {
   background: var(--color-paper);
-  padding: clamp(56px, 7vw, 112px) var(--gutter)
-    calc(var(--section-pad) + var(--space-64));
+  padding: clamp(56px, 7vw, 112px) var(--gutter) var(--section-pad);
 }
 
 .about__top {
@@ -537,7 +536,7 @@ html:not(.is-loaded) body {
 
 .cta {
   position: relative;
-  height: 180vh;
+  height: 240vh;
 }
 
 .cta__stage {
@@ -569,12 +568,18 @@ html:not(.is-loaded) body {
 .cta__scrim {
   position: absolute;
   inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
   background: linear-gradient(
     to top,
     rgba(0, 10, 24, 0.6),
     rgba(0, 10, 24, 0.35) 45%,
     rgba(0, 10, 24, 0.5)
   );
+}
+
+.cta__scrim.is-active {
+  opacity: 1;
 }
 
 .cta__content {
@@ -598,9 +603,10 @@ html:not(.is-loaded) body {
   font-synthesis-weight: none;
   text-transform: uppercase;
   color: #fff;
-  font-size: clamp(3rem, 2rem + 5vw, 5.5rem);
+  font-size: clamp(2.25rem, 1.6rem + 3.5vw, 3.75rem);
   line-height: 0.95;
   letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
 .cta__heading em {
@@ -614,7 +620,7 @@ html:not(.is-loaded) body {
 
 @media (max-width: 860px) {
   .cta {
-    height: 140vh;
+    height: 190vh;
   }
 }
 
@@ -658,6 +664,17 @@ html:not(.is-loaded) body {
 .btn--secondary:hover {
   border-color: var(--color-navy);
   color: var(--color-navy);
+}
+
+.btn--white {
+  background: #fff;
+  color: var(--color-ink);
+  border: 1px solid #fff;
+}
+
+.btn--white:hover {
+  background: transparent;
+  color: #fff;
 }
 
 .btn:focus-visible {

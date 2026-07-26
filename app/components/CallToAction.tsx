@@ -26,6 +26,8 @@ export default function CallToAction() {
     const image = imageRef.current;
     if (!section || !frame || !image) return;
 
+    const initialSideInset = parseFloat(getComputedStyle(frame).left) || 0;
+
     let ticking = false;
 
     const update = () => {
@@ -38,6 +40,10 @@ export default function CallToAction() {
       const inset = INITIAL_INSET * (1 - progress);
       frame.style.top = `${inset}px`;
       frame.style.bottom = `${inset}px`;
+
+      const sideInset = initialSideInset * (1 - progress);
+      frame.style.left = `${sideInset}px`;
+      frame.style.right = `${sideInset}px`;
 
       const scale = INITIAL_IMAGE_SCALE - progress * (INITIAL_IMAGE_SCALE - 1);
       image.style.transform = `scale(${scale})`;
@@ -71,7 +77,10 @@ export default function CallToAction() {
               style={{ objectFit: "cover" }}
             />
           </div>
-          <div className="cta__scrim" aria-hidden />
+          <div
+            className={`cta__scrim${textActive ? " is-active" : ""}`}
+            aria-hidden
+          />
         </div>
 
         <div className="cta__content">
@@ -83,7 +92,7 @@ export default function CallToAction() {
             active={textActive}
           />
           <div className={`reveal-block${textActive ? " is-active" : ""}`}>
-            <Link href="/contact" className="btn btn--primary cta__button">
+            <Link href="/contact" className="btn btn--white cta__button">
               Start the conversation
             </Link>
           </div>
