@@ -14,6 +14,9 @@ export default function Loader() {
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       root.classList.add("is-loaded");
+      // Deliberately synchronous: matchMedia is only readable client-side, so
+      // this can't be lazy initial state without risking a hydration mismatch.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(false);
       return;
     }

@@ -37,6 +37,9 @@ function useCountUp(target: number, active: boolean, duration = 1800) {
     if (!active) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Deliberately synchronous: matchMedia is only readable client-side, so
+      // this can't be lazy initial state without risking a hydration mismatch.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setValue(target);
       return;
     }

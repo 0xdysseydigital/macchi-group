@@ -17,6 +17,9 @@ export default function CallToAction() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Deliberately synchronous: matchMedia is only readable client-side, so
+      // this can't be lazy initial state without risking a hydration mismatch.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTextActive(true);
       return;
     }

@@ -3,30 +3,7 @@ import Link from "next/link";
 import Reveal from "./Reveal";
 import RevealParagraph from "./RevealParagraph";
 import Stats from "./Stats";
-
-const TEAM = [
-  {
-    name: "Tyler Macchi",
-    role: "Team Lead",
-    bio: "Born and raised in Southwest Florida, Tyler brings unmatched local knowledge to every conversation about the coast. He guides clients through Naples, Bonita Springs, and Fort Myers with the perspective only a native can offer.",
-    href: "/team/tyler-macchi",
-    image: "/images/team/tyler-macchi.jpg",
-  },
-  {
-    name: "Brandon Shirk",
-    role: "Sales Executive",
-    bio: "Brandon's years inside some of the country's most exclusive golf clubs shaped a rare fluency in luxury lifestyles and private club living. He brings that insight to every client seeking more than just a home.",
-    href: "/team/brandon-shirk",
-    image: "/images/team/brandon-shirk.jpg",
-  },
-  {
-    name: "Luke Groff",
-    role: "Operations Manager",
-    bio: "Luke helped grow a Pennsylvania restaurant group from one location to four in just two years, launching new concepts and sharpening the ones already running. That same builder's instinct now shapes how The Macchi Group tells its story and reaches new clients.",
-    href: "/team/luke-groff",
-    image: "/images/team/luke-groff.jpg",
-  },
-];
+import { TEAM } from "../lib/team";
 
 export default function About() {
   return (
@@ -57,7 +34,7 @@ export default function About() {
 
         <div className="about__team">
           {TEAM.map((member, i) => (
-            <Reveal key={member.name} delay={280 + i * 90}>
+            <Reveal key={member.slug} delay={280 + i * 90}>
               <article className="team-card">
                 <div className="team-card__image">
                   {member.image && (
@@ -74,7 +51,10 @@ export default function About() {
                   <h3 className="team-card__name">{member.name}</h3>
                   <p className="team-card__role">{member.role}</p>
                   <p className="team-card__bio">{member.bio}</p>
-                  <Link href={member.href} className="team-card__link">
+                  <Link
+                    href={`/team/${member.slug}`}
+                    className="team-card__link"
+                  >
                     Full bio
                     <svg
                       viewBox="0 0 16 16"
