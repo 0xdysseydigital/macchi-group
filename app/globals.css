@@ -611,7 +611,6 @@ html:not(.is-loaded) body {
 
 .cta__heading em {
   font-style: normal;
-  color: var(--color-gold);
 }
 
 .cta__button {
@@ -621,6 +620,70 @@ html:not(.is-loaded) body {
 @media (max-width: 860px) {
   .cta {
     height: 190vh;
+  }
+}
+
+/* Brand statement */
+
+.brand {
+  background: var(--color-paper);
+  padding: var(--section-pad) var(--gutter);
+}
+
+.brand__grid {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(240px, 400px) 1fr;
+  gap: clamp(48px, 8vw, 120px);
+  align-items: start;
+}
+
+.brand__eyebrow {
+  margin: 0;
+  font-family: var(--font-body), Georgia, serif;
+  font-size: var(--text-eyebrow);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--color-navy);
+}
+
+.brand__heading {
+  margin: var(--space-16) 0 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-synthesis-weight: none;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  font-size: var(--text-heading);
+  line-height: 1.16;
+  letter-spacing: 0.05em;
+}
+
+.brand__heading em {
+  font-style: normal;
+  color: var(--color-navy);
+}
+
+.brand__text {
+  margin: 0;
+  font-family: var(--font-body), Georgia, serif;
+  font-weight: 400;
+  font-size: var(--text-lead);
+  line-height: 1.65;
+  color: var(--color-soft);
+  max-width: 52ch;
+}
+
+.brand__cta {
+  margin-top: var(--space-40);
+}
+
+@media (max-width: 860px) {
+  .brand__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-40);
   }
 }
 
@@ -675,6 +738,33 @@ html:not(.is-loaded) body {
 .btn--white:hover {
   background: transparent;
   color: #fff;
+}
+
+.btn--fill-navy {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--color-navy);
+  border: 1px solid var(--color-navy);
+}
+
+.btn--fill-navy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-navy);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.btn--fill-navy:hover {
+  color: #fff;
+}
+
+.btn--fill-navy:hover::before {
+  transform: translateY(0);
 }
 
 .btn:focus-visible {
