@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PageHeader from "../components/PageHeader";
+import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import CallToAction from "../components/CallToAction";
 
@@ -64,10 +64,11 @@ const TRANSACTIONS = [
 export default function PortfolioPage() {
   return (
     <>
-      <PageHeader
+      <PageHero
         eyebrow="Past Transactions"
         heading="A track record on the coast"
-        lead="165+ closed transactions and $203.75M+ in sales volume across Naples, Bonita Springs, and Fort Myers."
+        image="/images/cta/beachfront.jpg"
+        alt="Beachfront homes along the Southwest Florida coast at dusk"
       />
 
       <section className="portfolio">

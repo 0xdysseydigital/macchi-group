@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
+import PageHero from "../../components/PageHero";
 import RevealParagraph from "../../components/RevealParagraph";
 import CallToAction from "../../components/CallToAction";
 import { TEAM, getTeamMember } from "../../lib/team";
@@ -36,27 +36,12 @@ export default async function TeamMemberPage({
 
   return (
     <>
-      <header className="profile-hero" data-nav-theme="dark">
-        <div className="profile-hero__image">
-          {member.image ? (
-            <Image
-              src={member.image}
-              alt={member.name}
-              fill
-              sizes="100vw"
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          ) : (
-            <div className="profile-hero__placeholder" aria-hidden />
-          )}
-          <div className="profile-hero__scrim" aria-hidden />
-        </div>
-        <div className="profile-hero__content">
-          <p className="profile-hero__eyebrow">{member.role}</p>
-          <h1 className="profile-hero__name">{member.name}</h1>
-        </div>
-      </header>
+      <PageHero
+        eyebrow={member.role}
+        heading={member.name}
+        image={member.image ?? "/images/about/naples-5th.jpg"}
+        alt={member.name}
+      />
 
       <section className="prose-section">
         <div className="prose-section__inner">

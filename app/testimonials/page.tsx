@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PageHeader from "../components/PageHeader";
+import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import CallToAction from "../components/CallToAction";
 
@@ -52,10 +52,11 @@ const TESTIMONIALS = [
 export default function TestimonialsPage() {
   return (
     <>
-      <PageHeader
+      <PageHero
         eyebrow="Client Success"
         heading="What clients say"
-        lead="A few words from buyers and sellers we've had the privilege to work with across Southwest Florida."
+        image="/images/about/naples-5th.jpg"
+        alt="Fifth Avenue South, Naples, Florida"
       />
 
       <section className="testimonials">

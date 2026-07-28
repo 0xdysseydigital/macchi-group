@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Loader from "./components/Loader";
-import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import "./globals.css";
@@ -39,7 +38,6 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Loader />
         <SmoothScroll />
-        <Nav />
         {children}
         <Footer />
       </body>

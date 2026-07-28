@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import PageHeader from "../components/PageHeader";
+import PageHero from "../components/PageHero";
 import RevealParagraph from "../components/RevealParagraph";
 import Reveal from "../components/Reveal";
 import Stats from "../components/Stats";
@@ -32,10 +32,11 @@ const PILLARS = [
 export default function AboutPage() {
   return (
     <>
-      <PageHeader
+      <PageHero
         eyebrow="About The Macchi Group"
         heading="More than a transaction"
-        lead="A boutique Southwest Florida real estate team built on relationships and results."
+        image="/images/about/naples-5th.jpg"
+        alt="Fifth Avenue South, Naples, Florida"
       />
 
       <section className="prose-section">

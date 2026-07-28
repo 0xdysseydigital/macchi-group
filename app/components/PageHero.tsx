@@ -1,12 +1,23 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 const PARALLAX_SPEED = 0.5;
 
-export default function Hero() {
+export default function PageHero({
+  eyebrow,
+  heading,
+  image,
+  alt,
+}: {
+  eyebrow?: string;
+  heading: string;
+  image: string;
+  alt: string;
+}) {
   const heroRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -14,8 +25,8 @@ export default function Hero() {
     }
 
     const hero = heroRef.current;
-    const video = videoRef.current;
-    if (!hero || !video) return;
+    const image = imageRef.current;
+    if (!hero || !image) return;
 
     let ticking = false;
 
@@ -25,7 +36,7 @@ export default function Hero() {
       if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
 
       const scrolled = Math.min(Math.max(0, -rect.top), rect.height);
-      video.style.transform = `translate3d(0, ${scrolled * PARALLAX_SPEED}px, 0)`;
+      image.style.transform = `translate3d(0, ${scrolled * PARALLAX_SPEED}px, 0)`;
     };
 
     const onScroll = () => {
@@ -41,32 +52,32 @@ export default function Hero() {
   }, []);
 
   return (
-    <header className="hero" ref={heroRef}>
-      <video
-        className="hero__video"
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/media/hero-poster.jpg"
-      >
-        <source src="/media/hero-coastline.mp4" type="video/mp4" />
-      </video>
+    <header className="page-hero" ref={heroRef}>
+      <div className="page-hero__image" ref={imageRef}>
+        <Image
+          src={image}
+          alt={alt}
+          fill
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
+          priority
+        />
+      </div>
 
       <div className="hero__scrim-top" aria-hidden />
       <div className="hero__scrim-bottom" aria-hidden />
 
-      <div className="hero__content">
-        <h1 className="wordmark">
-          <span className="rv">
-            <span>The</span>
-          </span>
-          <span className="rv">
-            <span>Macchi</span>
-          </span>
-          <span className="rv">
-            <span>Group</span>
+      <div className="page-hero__content">
+        {eyebrow && (
+          <p className="page-hero__eyebrow">
+            <span className="rv page-hero__rv">
+              <span>{eyebrow}</span>
+            </span>
+          </p>
+        )}
+        <h1 className="page-hero__heading">
+          <span className="rv page-hero__rv">
+            <span>{heading}</span>
           </span>
         </h1>
       </div>
