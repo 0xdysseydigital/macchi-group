@@ -37,7 +37,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "Buying from out of state is stressful. Tyler and Luke coordinated everything so it never felt that way.",
+      "Buying from out of state is stressful. Tyler coordinated everything so it never felt that way.",
     name: "David & Priya S.",
     location: "Fort Myers Beach, FL",
   },

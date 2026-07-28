@@ -40,20 +40,6 @@ export const TEAM: TeamMember[] = [
     email: "brandon@themacchigroup.com",
     phone: "(239) 825-0700",
   },
-  {
-    slug: "luke-groff",
-    name: "Luke Groff",
-    role: "Operations Manager",
-    image: "/images/team/luke-groff.jpg",
-    bio: "Luke helped grow a Pennsylvania restaurant group from one location to four in just two years, launching new concepts and sharpening the ones already running. That same builder's instinct now shapes how The Macchi Group tells its story and reaches new clients.",
-    fullBio: [
-      "Luke helped grow a Pennsylvania restaurant group from one location to four in just two years, launching new concepts and sharpening the ones already running. That same builder's instinct now shapes how The Macchi Group tells its story and reaches new clients.",
-      "Luke leads the operational side of the team — the systems, marketing, and day-to-day details that let Tyler and Brandon stay focused on clients instead of logistics.",
-      "He's drawn to the same thing in real estate that drew him to restaurants: building something that runs well because every detail was considered on purpose.",
-    ],
-    email: "luke@themacchigroup.com",
-    phone: "(239) 825-0700",
-  },
 ];
 
 export function getTeamMember(slug: string): TeamMember | undefined {
