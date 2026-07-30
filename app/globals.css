@@ -423,6 +423,136 @@ html:not(.is-loaded) body {
   animation-delay: 0.32s;
 }
 
+/* Nav: menu bar + sidebar modal */
+
+html.sidebar-open,
+html.sidebar-open body {
+  overflow: hidden;
+}
+
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 400;
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-16) var(--gutter);
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-hairline);
+  transition: opacity 0.4s ease;
+}
+
+.menu-bar--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sidebar--open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.sidebar__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 46, 92, 0.35);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.sidebar--open .sidebar__backdrop {
+  opacity: 1;
+}
+
+.sidebar__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(480px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  padding: var(--space-16) var(--gutter) var(--space-40);
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.sidebar--open .sidebar__panel {
+  transform: translateX(0);
+}
+
+.sidebar__close {
+  align-self: flex-end;
+}
+
+.sidebar__links {
+  margin-top: var(--space-64);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.sidebar__link {
+  position: relative;
+  align-self: flex-start;
+  padding-bottom: var(--space-4);
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  font-synthesis-weight: none;
+  text-transform: uppercase;
+  font-size: var(--text-display);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sidebar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-navy);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.sidebar__link:hover {
+  color: var(--color-navy);
+}
+
+.sidebar__link:hover::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-bar,
+  .sidebar__backdrop,
+  .sidebar__panel,
+  .sidebar__link,
+  .sidebar__link::after {
+    transition: none !important;
+  }
+}
+
 /* About */
 
 .about {
@@ -748,66 +878,28 @@ html:not(.is-loaded) body {
 /* Buttons */
 
 .btn {
+  position: relative;
+  z-index: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   padding: var(--space-16) var(--space-24);
   font-family: var(--font-body), Georgia, serif;
   font-weight: 400;
   font-size: var(--text-caption);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border-radius: var(--radius-button);
+  border-radius: 0;
+  background: transparent;
   text-decoration: none;
+  cursor: pointer;
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    color 0.3s ease,
+    transform 0.15s ease;
 }
 
-.btn--primary {
-  background: var(--color-navy);
-  color: var(--color-paper);
-  border: 1px solid var(--color-navy);
-}
-
-.btn--primary:hover {
-  background: var(--color-ink);
-  border-color: var(--color-ink);
-}
-
-.btn--secondary {
-  background: transparent;
-  color: var(--color-ink);
-  border: 1px solid var(--color-hairline);
-}
-
-.btn--secondary:hover {
-  border-color: var(--color-navy);
-  color: var(--color-navy);
-}
-
-.btn--white {
-  background: #fff;
-  color: var(--color-ink);
-  border: 1px solid #fff;
-}
-
-.btn--white:hover {
-  background: transparent;
-  color: #fff;
-}
-
-.btn--fill-navy {
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
-  background: transparent;
-  color: var(--color-navy);
-  border: 1px solid var(--color-navy);
-}
-
-.btn--fill-navy::before {
+.btn::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -817,12 +909,27 @@ html:not(.is-loaded) body {
   transition: transform 0.35s cubic-bezier(0.16, 0.84, 0.44, 1);
 }
 
+.btn:hover::before {
+  transform: translateY(0);
+}
+
+.btn:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+
+.btn--fill-navy {
+  color: var(--color-navy);
+  border: 1px solid var(--color-navy);
+}
+
 .btn--fill-navy:hover {
   color: #fff;
 }
 
-.btn--fill-navy:hover::before {
-  transform: translateY(0);
+.btn--white {
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .btn:focus-visible {
@@ -880,8 +987,8 @@ html:not(.is-loaded) body {
 /* Footer */
 
 .footer {
-  background: var(--color-paper);
-  border-top: 1px solid var(--color-hairline);
+  background: var(--color-navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer__top {
@@ -893,6 +1000,10 @@ html:not(.is-loaded) body {
   gap: var(--space-40);
 }
 
+.footer .footer__wordmark {
+  color: #fff;
+}
+
 .footer__wordmark {
   display: inline-block;
   font-weight: 400;
@@ -902,6 +1013,10 @@ html:not(.is-loaded) body {
   letter-spacing: 0.05em;
   color: var(--color-ink);
   text-decoration: none;
+}
+
+.footer .footer__tagline {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .footer__tagline {
@@ -932,6 +1047,18 @@ html:not(.is-loaded) body {
   text-underline-offset: 4px;
 }
 
+.footer .footer__link {
+  color: #fff;
+}
+
+.footer .footer__link:hover {
+  color: var(--color-gold);
+}
+
+.footer .footer__address {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .footer__address {
   margin: 0;
   font-family: var(--font-body), Georgia, serif;
@@ -946,16 +1073,16 @@ html:not(.is-loaded) body {
 }
 
 .footer__legal {
-  border-top: 1px solid var(--color-hairline);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding: var(--space-24) var(--gutter);
 }
 
 .footer__legal p {
+  color: rgba(255, 255, 255, 0.6);
   max-width: var(--page-max);
   margin: 0 auto;
   font-family: var(--font-body), Georgia, serif;
   font-size: var(--text-caption);
-  color: var(--color-muted);
 }
 
 @media (max-width: 760px) {

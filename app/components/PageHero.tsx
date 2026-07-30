@@ -52,7 +52,7 @@ export default function PageHero({
   }, []);
 
   return (
-    <header className="page-hero" ref={heroRef}>
+    <header className="page-hero" ref={heroRef} data-nav-theme="dark">
       <div className="page-hero__image" ref={imageRef}>
         <Image
           src={image}

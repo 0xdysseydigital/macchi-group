@@ -25,7 +25,7 @@ export default function About() {
             text="The Macchi Group was built on a simple belief: real estate is a long-term partnership, not a single transaction. Clients get strategic guidance grounded in real market fluency, a discreet and highly personalized experience, and a level of commitment that doesn't end at closing."
           />
 
-          <Link href="/about" className="btn btn--secondary about__cta">
+          <Link href="/about" className="btn btn--fill-navy about__cta">
             About the group
           </Link>
 
