@@ -41,7 +41,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <header className="hero" ref={heroRef} data-nav-theme="dark">
+    <header className="hero" ref={heroRef}>
       <video
         className="hero__video"
         ref={videoRef}

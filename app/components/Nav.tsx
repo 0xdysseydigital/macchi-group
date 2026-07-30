@@ -11,25 +11,21 @@ const LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-const FALLBACK_THRESHOLD = 120;
-
 export default function Nav() {
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const darkBand = document.querySelector<HTMLElement>(
-      "[data-nav-theme='dark']",
-    );
-    const threshold = darkBand
-      ? Math.max(darkBand.offsetHeight - 96, 0)
-      : FALLBACK_THRESHOLD;
-
+    // Hero and PageHero are both exactly 100svh, so the viewport height
+    // itself is a reliable "past the hero" threshold on every page —
+    // no need to measure a specific element (which went stale across
+    // client-side navigations since Nav lives in the root layout and
+    // never remounts).
     let ticking = false;
 
     const update = () => {
       ticking = false;
-      setVisible(window.scrollY > threshold);
+      setVisible(window.scrollY > window.innerHeight * 0.9);
     };
 
     const onScroll = () => {
