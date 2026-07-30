@@ -8,11 +8,10 @@ const LINKS = [
   { href: "/about", label: "About" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/testimonials", label: "Testimonials" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Nav() {
-  const [visible, setVisible] = useState(false);
+  const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -25,7 +24,7 @@ export default function Nav() {
 
     const update = () => {
       ticking = false;
-      setVisible(window.scrollY > window.innerHeight * 0.9);
+      setSolid(window.scrollY > window.innerHeight * 0.9);
     };
 
     const onScroll = () => {
@@ -49,10 +48,10 @@ export default function Nav() {
 
   return (
     <>
-      <div className={`menu-bar${visible ? " menu-bar--visible" : ""}`}>
+      <div className={`menu-bar${solid ? " menu-bar--solid" : ""}`}>
         <button
           type="button"
-          className="btn btn--fill-navy menu-bar__toggle"
+          className={`btn menu-bar__toggle${solid ? " btn--fill-navy" : " btn--white"}`}
           onClick={() => setOpen(true)}
         >
           Menu
@@ -89,6 +88,19 @@ export default function Nav() {
               </Link>
             ))}
           </nav>
+
+          <Link
+            href="/contact"
+            className="btn btn--fill-navy sidebar__cta"
+            onClick={() => setOpen(false)}
+          >
+            Start the conversation
+          </Link>
+
+          <span className="sidebar__mark" aria-hidden>
+            <span className="sidebar__mark-m">M</span>
+            <span className="sidebar__mark-g">G</span>
+          </span>
         </div>
       </div>
     </>
