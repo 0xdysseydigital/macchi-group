@@ -539,7 +539,7 @@ html.sidebar-open body {
   right: 0;
   bottom: 0;
   height: 2px;
-  background: var(--color-navy);
+  background: currentColor;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.4s cubic-bezier(0.16, 0.84, 0.44, 1);
