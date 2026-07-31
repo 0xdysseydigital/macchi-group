@@ -4,7 +4,7 @@ import Reveal from "../components/Reveal";
 import CallToAction from "../components/CallToAction";
 
 export const metadata: Metadata = {
-  title: "Portfolio | The Macchi Group",
+  title: "Transactions | The Macchi Group",
   description:
     "A sample of past sales across Naples, Bonita Springs, and Fort Myers.",
 };
@@ -61,7 +61,7 @@ const TRANSACTIONS = [
   },
 ];
 
-export default function PortfolioPage() {
+export default function TransactionsPage() {
   return (
     <>
       <PageHero
@@ -71,8 +71,8 @@ export default function PortfolioPage() {
         alt="Beachfront homes along the Southwest Florida coast at dusk"
       />
 
-      <section className="portfolio">
-        <div className="portfolio__grid">
+      <section className="transactions">
+        <div className="transactions__grid">
           {TRANSACTIONS.map((property, i) => (
             <Reveal
               key={property.address}

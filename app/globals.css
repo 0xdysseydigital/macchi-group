@@ -369,8 +369,8 @@ html:not(.is-loaded) body {
 
 .page-hero {
   position: relative;
-  height: 100svh;
-  min-height: 480px;
+  height: 50svh;
+  min-height: 240px;
   overflow: hidden;
   background: linear-gradient(160deg, var(--color-mist) 0%, #c3d4de 100%);
 }
@@ -1271,7 +1271,7 @@ html.sidebar-open body {
 
 @media (max-width: 760px) {
   .page-hero {
-    min-height: 460px;
+    min-height: 230px;
   }
 
   .about-page__stats .stats {
@@ -1344,14 +1344,14 @@ html.sidebar-open body {
   color: var(--color-muted);
 }
 
-/* Portfolio (past transactions) */
+/* Transactions (past sales) */
 
-.portfolio {
+.transactions {
   background: var(--color-paper);
   padding: var(--section-pad) var(--gutter);
 }
 
-.portfolio__grid {
+.transactions__grid {
   max-width: var(--page-max);
   margin: 0 auto;
   display: grid;
@@ -1424,5 +1424,20 @@ html.sidebar-open body {
   font-family: var(--font-body), Georgia, serif;
   font-size: var(--text-caption);
   letter-spacing: 0.05em;
+  color: var(--color-muted);
+}
+
+/* Placeholder section (Contact, Listings, Neighborhoods) */
+
+.placeholder-section {
+  background: var(--color-paper);
+  padding: var(--section-pad) var(--gutter);
+  text-align: center;
+}
+
+.placeholder-section__text {
+  margin: 0;
+  font-family: var(--font-body), Georgia, serif;
+  font-size: var(--text-lead);
   color: var(--color-muted);
 }
