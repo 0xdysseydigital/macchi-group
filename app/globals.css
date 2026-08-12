@@ -262,6 +262,14 @@ html:not(.is-loaded) body {
   will-change: transform;
 }
 
+.hero__shader {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: overlay;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 .hero__scrim-top,
 .hero__scrim-bottom {
   position: absolute;

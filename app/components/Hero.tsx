@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ShaderBackground } from "@/components/ui/oceanic-currents";
 
 const PARALLAX_SPEED = 0.5;
 
@@ -53,6 +54,8 @@ export default function Hero() {
       >
         <source src="/media/hero-coastline.mp4" type="video/mp4" />
       </video>
+
+      <ShaderBackground className="hero__shader" />
 
       <div className="hero__scrim-top" aria-hidden />
       <div className="hero__scrim-bottom" aria-hidden />
