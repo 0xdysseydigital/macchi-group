@@ -1,5 +1,8 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
+import { TRANSACTIONS } from "../lib/transactions";
+
+const FEATURED = TRANSACTIONS.slice(0, 3);
 
 export default function BrandStatement() {
   return (
@@ -22,6 +25,37 @@ export default function BrandStatement() {
           </p>
           <Link href="/about" className="btn btn--fill-navy brand__cta">
             Learn more
+          </Link>
+        </Reveal>
+      </div>
+
+      <div className="brand__transactions">
+        <div className="transactions__grid">
+          {FEATURED.map((property, i) => (
+            <Reveal
+              key={property.address}
+              className="property-card"
+              delay={i * 100}
+            >
+              <div className="property-card__image" aria-hidden>
+                <span className="property-card__status">Sold</span>
+              </div>
+              <div className="property-card__body">
+                <p className="property-card__price">{property.price}</p>
+                <p className="property-card__address">{property.address}</p>
+                <p className="property-card__city">{property.city}</p>
+                <p className="property-card__meta">
+                  {property.beds} bd &middot; {property.baths} ba &middot;{" "}
+                  {property.sqft} sqft
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal className="brand__transactions-cta-wrap" delay={FEATURED.length * 100}>
+          <Link href="/transactions" className="btn btn--fill-navy brand__transactions-cta">
+            View all transactions
           </Link>
         </Reveal>
       </div>
